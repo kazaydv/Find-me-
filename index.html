@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For My Motu ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #ffe4e6, #dbeafe);
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('sunset-rooftop.jpg') center/cover no-repeat;
+      z-index: -1;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
+    }
+
+    .container {
+      max-width: 90%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #be185d;
+      font-family: 'Pacifico', cursive;
+      margin: 0.5rem 0 0 0;
+      animation: slideDown 1.5s ease forwards;
+    }
+
+    .nickname {
+      font-size: 1.2rem;
+      color: #ec4899;
+      margin-top: 0.3rem;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .typewriter-text,
+    #followUp {
+      font-size: 1.1rem;
+      color: #374151;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      opacity: 1;
+      border-right: none;
+    }
+
+    @keyframes typeLine {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .message-card {
+      max-width: 600px;
+      margin-top: 2rem;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      color: #374151;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .message-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gift-box {
+      width: 250px;
+      height: 250px;
+      background-color: #ff89b5;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 15px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      animation: bounce 1.5s ease-in-out infinite;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .gift-box:hover {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9f1239;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .heart, .petal {
+      position: absolute;
+      font-size: 2rem;
+      color: #ec4899;
+      animation: float 5s linear infinite;
+    }
+
+    .leaf {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: fall 5s ease-in-out infinite;
+      opacity: 0;
+      z-index: 10;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #f472b6; }
+      to { text-shadow: 0 0 20px #f472b6; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-15px); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .gift-box {
+        width: 90%;
+        height: auto;
+        font-size: 1rem;
+        padding: 15px;
+      }
+
+      .message-card {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div id="giftBox" class="gift-box">
+    Open me and read carefully! <br> Don’t cry after reading. 😢
+  </div>
+
+  <div class="container" id="content" style="display:none;">
+    <h1>For My Motu ❤️</h1>
+    <div class="nickname">(my favorite person in the whole world)</div>
+    <div class="typewriter-text">You’re heading off to chase your dreams — and I couldn’t be more proud.</div>
+    <div id="followUp">I’ll miss you, Motu.</div>
+
+    <div class="message-card" id="messageCard">
+      <p>
+        I’ll miss you motu..Malai kasto khallo lairako cha , i can't express mero mann kati bhari jasto bhayeko cha , mah k bhanam bhanera ni kei airako chaina dimag ma , hamile beshak ekdam kam time bitayeko cham ek arka sanga , tara tyo time samjhida pani bhitra ko emotion samhalna garoh bhairako cha, Wishing hamro feri chitai vet hune cha ani sangai basera yo padhne cham , teti bela samma ko lagi euta sano memory mero , pachi herda pani yo moment yaad garera khusi hunu , ani daami garnu aba bahira niskidai chau , broad hunu confident hunu aafu mathi always. malai ajhai kati kura bhanna cha tara sakirako chaina . Hope to see you soon motu. mah yei chu 🌍✨💖
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">No distance can weaken what we have. ✨</div>
+
+  <audio autoplay loop>
+    <source src="lofi_girl.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Floating Elements -->
+  <div class="heart" style="top: 10%; left: 20%; animation-delay: 0s;">💖</div>
+  <div class="heart" style="top: 30%; left: 50%; animation-delay: 2s;">💖</div>
+  <div class="heart" style="top: 60%; left: 70%; animation-delay: 4s;">💖</div>
+  <div class="petal" style="top: 5%; left: 80%; animation-delay: 1s;">🌸</div>
+  <div class="petal" style="top: 40%; left: 40%; animation-delay: 3s;">🌸</div>
+  <div class="petal" style="top: 80%; left: 10%; animation-delay: 5s;">🌸</div>
+  <div class="leaf" style="left: 15%; animation-delay: 0s;">🍂</div>
+  <div class="leaf" style="left: 35%; animation-delay: 2s;">🍂</div>
+  <div class="leaf" style="left: 55%; animation-delay: 1s;">🍂</div>
+  <div class="leaf" style="left: 75%; animation-delay: 3s;">🍂</div>
+  <div class="leaf" style="left: 25%; animation-delay: 4s;">🍂</div>
+
+  <script>
+    document.getElementById("giftBox").onclick = function () {
+      document.getElementById("giftBox").style.display = "none";
+      document.getElementById("content").style.display = "flex";
+
+      const line1 = document.querySelector(".typewriter-text");
+      const line2 = document.getElementById("followUp");
+
+      line1.style.animation = "typeLine 6s steps(60, end) forwards";
+
+      setTimeout(() => {
+        line2.style.animation = "typeLine 3s steps(40, end) forwards";
+      }, 6000);
+
+      setTimeout(() => {
+        document.getElementById("messageCard").classList.add("show");
+      }, 6000);
+    };
+  </script>
+</body>
+</html>
