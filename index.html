@@ -291,11 +291,12 @@
   <div class="leaf" style="left: 25%; animation-delay: 4s;">🍂</div>
 
   <script>
+    const bgMusic = document.getElementById("bgMusic");
+  bgMusic.play();
     document.getElementById("giftBox").onclick = function () {
       document.getElementById("giftBox").style.display = "none";
       document.getElementById("content").style.display = "flex";
-       const bgMusic = document.getElementById("bgMusic");
-  bgMusic.play();
+       
 
       const line1 = document.querySelector(".typewriter-text");
       const line2 = document.getElementById("followUp");
