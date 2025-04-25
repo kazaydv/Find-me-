@@ -312,5 +312,62 @@
       }, 6500);
     };
   </script>
+<script>
+  // Make all floating elements draggable
+  const draggables = document.querySelectorAll('.heart, .petal, .leaf');
+
+  draggables.forEach(el => {
+    el.style.cursor = 'grab';
+    el.addEventListener('mousedown', startDrag);
+    el.addEventListener('touchstart', startDrag, { passive: false });
+  });
+
+  let currentDrag = null;
+  let offsetX = 0, offsetY = 0;
+
+  function startDrag(e) {
+    e.preventDefault();
+    currentDrag = this;
+
+    // Pause animation so it doesn't interfere
+    currentDrag.style.animationPlayState = 'paused';
+
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+
+    const rect = currentDrag.getBoundingClientRect();
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchend', stopDrag);
+  }
+
+  function drag(e) {
+    if (!currentDrag) return;
+
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+
+    currentDrag.style.left = `${clientX - offsetX}px`;
+    currentDrag.style.top = `${clientY - offsetY}px`;
+  }
+
+  function stopDrag() {
+    if (!currentDrag) return;
+
+    // Optionally, you can resume the animation if needed:
+    // currentDrag.style.animationPlayState = 'running';
+
+    currentDrag = null;
+    document.removeEventListener('mousemove', drag);
+    document.removeEventListener('mouseup', stopDrag);
+    document.removeEventListener('touchmove', drag);
+    document.removeEventListener('touchend', stopDrag);
+  }
+</script>
+
 </body>
 </html>
