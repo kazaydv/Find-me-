@@ -312,6 +312,77 @@
       }, 6500);
     };
   </script>
+<script>
+  const draggables = document.querySelectorAll('.heart, .petal, .leaf');
+
+  draggables.forEach(el => {
+    el.style.cursor = 'grab';
+    el.style.animationPlayState = 'running'; // ensure it's moving by default
+    el.addEventListener('mousedown', startDrag);
+    el.addEventListener('touchstart', startDrag, { passive: false });
+  });
+
+  let currentDrag = null;
+  let offsetX = 0, offsetY = 0;
+
+  function startDrag(e) {
+    e.preventDefault();
+    currentDrag = this;
+
+    // Stop animation and fix position
+    const computedStyle = getComputedStyle(currentDrag);
+    const left = currentDrag.offsetLeft;
+    const top = currentDrag.offsetTop;
+
+    currentDrag.style.animation = 'none';
+    currentDrag.style.left = left + 'px';
+    currentDrag.style.top = top + 'px';
+    currentDrag.style.position = 'absolute';
+
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+
+    offsetX = clientX - left;
+    offsetY = clientY - top;
+
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchend', stopDrag);
+  }
+
+  function drag(e) {
+    if (!currentDrag) return;
+
+    const clientX = e.clientX || e.touches[0].clientX;
+    const clientY = e.clientY || e.touches[0].clientY;
+
+    currentDrag.style.left = `${clientX - offsetX}px`;
+    currentDrag.style.top = `${clientY - offsetY}px`;
+  }
+
+  function stopDrag() {
+    if (!currentDrag) return;
+
+    // Resume falling by applying fall animation again
+    const isLeaf = currentDrag.classList.contains('leaf');
+    const isPetal = currentDrag.classList.contains('petal');
+    const isHeart = currentDrag.classList.contains('heart');
+
+    if (isLeaf) {
+      currentDrag.style.animation = 'fall 5s ease-in-out infinite';
+    } else if (isPetal || isHeart) {
+      currentDrag.style.animation = 'float 5s linear infinite';
+    }
+
+    currentDrag = null;
+
+    document.removeEventListener('mousemove', drag);
+    document.removeEventListener('mouseup', stopDrag);
+    document.removeEventListener('touchmove', drag);
+    document.removeEventListener('touchend', stopDrag);
+  }
+</script>
 
 
 </body>
