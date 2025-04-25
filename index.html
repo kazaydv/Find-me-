@@ -93,7 +93,56 @@
       opacity: 1;
       transform: translateY(0);
     }
-    
+     .message-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: radial-gradient(circle, rgba(255,192,203,0.2) 0%, rgba(255,192,203,0) 80%);
+    pointer-events: none;
+    animation: heartbeat 2.5s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .message-card:hover .message-glow {
+    opacity: 1;
+  }
+
+  @keyframes heartbeat {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.05); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 0.3; }
+  }
+
+  .shooting-star {
+    position: fixed;
+    top: -50px;
+    width: 2px;
+    height: 80px;
+    background: white;
+    animation: shoot 6s linear infinite;
+    opacity: 0.7;
+    transform: rotate(45deg);
+  }
+
+  @keyframes shoot {
+    0% {
+      top: -50px;
+      left: 70%;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      left: 100%;
+      opacity: 0;
+    }
+  }
 
     .gift-box {
       width: 250px;
@@ -213,6 +262,7 @@
     <div id="followUp" display="none">I’ll miss you, Motu.</div>
 
     <div class="message-card" id="messageCard">
+      <div class="message-glow"></div>
       <p>
         I’ll miss you motu..Malai kasto khallo lairako cha , i can't express mero mann kati bhari jasto bhayeko cha , mah k bhanam bhanera ni kei airako chaina dimag ma , hamile beshak ekdam kam time bitayeko cham ek arka sanga , tara tyo time samjhida pani bhitra ko emotion samhalna garoh bhairako cha, Wishing hamro feri chitai vet hune cha ani sangai basera yo padhne cham , teti bela samma ko lagi euta sano memory mero , pachi herda pani yo moment yaad garera khusi hunu , ani daami garnu aba bahira niskidai chau , broad hunu confident hunu aafu mathi always. malai ajhai kati kura bhanna cha tara sakirako chaina . Hope to see you soon motu. mah yei chu 🌍✨💖
       </p>
@@ -226,7 +276,7 @@
   <source src="lofi_girl.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
-
+<div class="shooting-star"></div>
   <!-- Floating Elements -->
   <div class="heart" style="top: 10%; left: 20%; animation-delay: 0s;">💖</div>
   <div class="heart" style="top: 30%; left: 50%; animation-delay: 2s;">💖</div>
