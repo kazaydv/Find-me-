@@ -205,9 +205,7 @@
   </div>
 
   <div class="container" id="content" style="display:none;">
-     <audio autoplay loop>
-  <source src="lofi_girl.mp3" type="audio/mpeg">
-</audio>
+     
     <h1>For My Motu ❤️</h1>
     <div class="nickname">(my favorite person in the whole world)</div>
     <div class="typewriter-text">You’re heading off to chase your dreams —and</div>
@@ -223,7 +221,10 @@
   <div class="footer">No distance can weaken what we have. ✨</div>
 
  
-
+<audio id="bgMusic" autoplay loop>
+  <source src="lofi_girl.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
   <!-- Floating Elements -->
   <div class="heart" style="top: 10%; left: 20%; animation-delay: 0s;">💖</div>
@@ -242,6 +243,8 @@
     document.getElementById("giftBox").onclick = function () {
       document.getElementById("giftBox").style.display = "none";
       document.getElementById("content").style.display = "flex";
+       const bgMusic = document.getElementById("bgMusic");
+  bgMusic.play();
 
       const line1 = document.querySelector(".typewriter-text");
       const line2 = document.getElementById("followUp");
