@@ -266,6 +266,16 @@
       <p>
         I’ll miss you motu..Malai kasto khallo lairako cha , i can't express mero mann kati bhari jasto bhayeko cha , mah k bhanam bhanera ni kei airako chaina dimag ma , hamile beshak ekdam kam time bitayeko cham ek arka sanga , tara tyo time samjhida pani bhitra ko emotion samhalna garoh bhairako cha, Wishing hamro feri chitai vet hune cha ani sangai basera yo padhne cham , teti bela samma ko lagi euta sano memory mero , pachi herda pani yo moment yaad garera khusi hunu , ani daami garnu aba bahira niskidai chau , broad hunu confident hunu aafu mathi always. malai ajhai kati kura bhanna cha tara sakirako chaina . Hope to see you soon motu. mah yei chu 🌍✨💖
       </p>
+      <button id="moreButton" class="small-btn">There’s more Motu ❤️</button>
+
+    <!-- Hidden Love Message -->
+    <div id="loveMessage">
+      <video autoplay loop muted>
+        <source src="cuddling.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="color: #ec4899; font-size: 1.2rem; margin-top: 10px;">I love you more than words can say. 🌹</p>
+    </div>
     </div>
   </div>
 
@@ -311,6 +321,9 @@
         document.getElementById("messageCard").classList.add("show");
       }, 6500);
     };
+    document.getElementById("moreButton").onclick = function () {
+    document.getElementById("loveMessage").style.display = "block";
+  };
   </script>
 <script>
   const draggables = document.querySelectorAll('.heart, .petal, .leaf');
